@@ -37,7 +37,7 @@ switch (orden){
   servo2.write(90);  
   break;
   default
-  detenerse():
+  alto():
   break;
   
 }
