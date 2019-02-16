@@ -12,8 +12,9 @@ void setup()
 }
 
 void loop() {
-  
-orden = Serial.read();
+  if (Serial.available() > 0)
+  orden = Serial.read();
+}
 
 switch (orden){
   case 'w':
