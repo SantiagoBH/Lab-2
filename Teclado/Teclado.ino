@@ -36,7 +36,9 @@ switch (orden){
   servo1.write(95);
   servo2.write(90);  
   break;
-
+  default
+  detenerse():
+  break;
   
 }
 }
