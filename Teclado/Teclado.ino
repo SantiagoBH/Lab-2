@@ -12,33 +12,41 @@ void setup()
 }
 
 void loop() {
-  if (Serial.available() > 0)
+  //if (Serial.available() > 0)
   orden = Serial.read();
-}
+  switch(orden){
 
-switch (orden){
-  case 'w':
+  case 'w': //Adelante
+  servo1.write(180);
+  servo2.write(0);  
+  break;
+  
+  case 's':  //Atras
   servo1.write(0);
-  servo2.write(0);
+  servo2.write(180);
   break;
 
-  case 's':
+  case 'a':  //Girar izquiera 
   servo1.write(90);
+  servo2.write(75);  
+  break;
+
+  case 'd':  //Girar derecha
+  servo1.write(100);
   servo2.write(90);  
   break;
 
-  case 'a':
+  case ' ':  //Detenerse
   servo1.write(90);
-  servo2.write(85);  
-  break;
-
-  case 'd':
-  servo1.write(95);
   servo2.write(90);  
   break;
-  default
-  detenerse():
+  default:
+  servo1.write(90);
+  servo2.write(90);
   break;
+  //default
+  //detenerse():
+  //break;
   
 }
 }
