@@ -19,23 +19,24 @@ void loop() {
   orden = Serial.read();
   switch(orden){
 
-  case 'w': //Adelante
-  servoD.write(antihorario);
-  servoI.write(horario);  
-  break;
-  
-  case 's':  //Atras
+
+  case 'w':  //Adelante
   servoD.write(horario);
   servoI.write(antihorario);
   break;
-
-  case 'a':  //Girar izquiera 
-  servoD.write(detener);
-  servoI.write(75);  
+  
+  case 's': //Atras
+  servoD.write(antihorario);
+  servoI.write(horario);  
   break;
 
-  case 'd':  //Girar derecha
-  servoD.write(100);
+  case 'd':  //Girar derecha 
+  servoD.write(detener);
+  servoI.write(100);  
+  break;
+
+  case 'a':  //Girar izquierda 
+  servoD.write(75);
   servoI.write(detener);  
   break;
 
