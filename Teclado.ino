@@ -1,41 +1,49 @@
 #include <Servo.h>
+#define horario 0
+#define antihorario 180
+#define detener 90
 
-Servo servo1, servo2;
+Servo servoD, servoI;
 
 char orden;
 
 void setup() 
 {
-  servo1.attach(9);
-  servo2.attach(13);
+  servoD.attach(9);
+  servoI.attach(13);
   Serial.begin(9600);
 }
 
 void loop() {
+  if (Serial.available() > 0)
+  orden = Serial.read();
+  switch(orden){
+
+  case 'w': //Adelante
+  servoD.write(antihorario);
+  servoI.write(horario);  
+  break;
   
-orden = Serial.read();
-
-switch (orden){
-  case 'w':
-  servo1.write(0);
-  servo2.write(0);
+  case 's':  //Atras
+  servoD.write(horario);
+  servoI.write(antihorario);
   break;
 
-  case 's':
-  servo1.write(90);
-  servo2.write(90);  
+  case 'a':  //Girar izquiera 
+  servoD.write(detener);
+  servoI.write(75);  
   break;
 
-  case 'a':
-  servo1.write(90);
-  servo2.write(85);  
+  case 'd':  //Girar derecha
+  servoD.write(100);
+  servoI.write(detener);  
   break;
 
-  case 'd':
-  servo1.write(95);
-  servo2.write(90);  
+  case ' ':  //Detenerse
+  servoD.write(detener);
+  servoI.write(detener);  
   break;
-
+  
   
 }
 }
